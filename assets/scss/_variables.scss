@@ -1,0 +1,47 @@
+
+/* Pink Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+	--font-size: 17px;
+	--color: #000;
+	--h1-color: #000;
+	--h2-color: #000;
+	--h3-color: #000;
+	--h4-color: #000;
+	--h5-color: #000;
+	--h6-color: #000;
+	--btn-background: #000;
+  --primary-hover: #c2185b;
+  --primary-focus: rgba(216, 27, 96, 0.125);
+  --primary-inverse: #FFF;
+}
+
+/* Pink Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  	--color: #fff;
+		--color: #fff;
+		--h1-color: #fff;
+		--h2-color: #fff;
+		--h3-color: #fff;
+		--h4-color: #fff;
+		--h5-color: #fff;
+		--h6-color: #fff;
+		--btn-background: #fff;
+    --primary: #d81b60;
+    --primary-hover: #e91e63;
+    --primary-focus: rgba(216, 27, 96, 0.25);
+    --primary-inverse: #000;
+  }
+}
+
+/* Pink (Common styles) */
+:root {
+ 	--font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}

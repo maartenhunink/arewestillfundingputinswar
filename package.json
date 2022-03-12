@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@picocss/pico": "^1.4.4",
+    "moment": "^2.29.1",
+    "reset-css": "^5.0.1"
+  }
+}
