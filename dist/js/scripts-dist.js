@@ -11,7 +11,7 @@
 	window.onload = function(){
 
 		var total_eur = 0;
-		let now = moment.utc();
+		let start = moment.utc();
 		let invasion = moment.utc('2022-02-24T03:00:00');
 
 		var tanks = 0;
@@ -21,6 +21,7 @@
 		var jetsPrice = 36565360;
 
 		var tweetBtn = document.getElementById('tweet-this');
+		var old_total_eur = 0;
 
 		document.getElementById('days-ago').innerHTML = invasion.fromNow();
 
@@ -29,18 +30,25 @@
 		  .then(data => {
 
         total_eur = data.total_eur;
+        per_sec = 7465.44083884953;
 
         setFunds(total_eur);
 
 			 	setInterval(function() {
-			 		total_eur = total_eur + (data.total_eur_per_sec / 10);
+					
+					seconds_since_start = moment.utc().diff(start) / 1000;
+			 		total_eur = data.total_eur + (data.total_eur_per_sec * seconds_since_start);
+
 			 		setFunds(total_eur)
 			 	}, 100);
 
 	 			setGraphics(total_eur, tanks, jets);
 
 			 	setInterval(function() {
-			 		total_eur = total_eur + (data.total_eur_per_sec * 1);
+					
+					seconds_since_start = moment.utc().diff(start) / 1000;
+			 		total_eur = data.total_eur + (data.total_eur_per_sec * seconds_since_start);
+			 		
 			 		setGraphics(total_eur, tanks, jets);
 			 	}, 1000);
 
@@ -73,7 +81,7 @@
 			 	document.getElementById('tanks-amount').innerHTML = tanks;
 
 			}
-			
+
 	 		var jetsHtml = '';
 
 	 		if(oldJets != jets){
